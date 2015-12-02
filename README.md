@@ -1,3 +1,13 @@
+WALS Scripts
+============
+
+This is a set of scripts to play with WALS. I'm interested in finding language similarity and language clusters using WALS features.
+
+I'm particularly interested in using phonological features for the purpose of transliteration. These are features 1-19. 
+
+See a demo of langsim.py at http://104.131.29.154:1234/langsim
+
+Notice that the WALS data comes from wals.info, and the following license must be attached.
 
 WALS Online data download
 =========================
