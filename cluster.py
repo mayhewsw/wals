@@ -1,9 +1,9 @@
-#!/usr/bin/python
 
-from sklearn.cluster import KMeans
 import csv
 
 def mp(x):
+    """ This turns the WALS vector into an integer vector. Each feature has the format: <int> <Description>.
+    This just returns the int."""
     out = []
     for v in x:
         if len(v) == 0:
@@ -12,11 +12,13 @@ def mp(x):
             out.append(int(v[0]))
     return out
 
-def getLangFeatures(frac = 0.0, phon=False):
+PHON_INDS = (10,39)
+
+def getLangFeatures(fname, frac = 0.0, phon=False):
     """ This returns only those languages with frac of the features non-zero."""
-    with open("language.csv") as csvfile:
+    with open(fname) as csvfile:
         f = csv.reader(csvfile, delimiter=',', quotechar='"')
-        
+
         i = 0
         X = []
         langs = []
@@ -28,8 +30,8 @@ def getLangFeatures(frac = 0.0, phon=False):
                 continue
 
             if phon:
-                m = mp(line[10:39])
-                sline = line[:39]
+                m = mp(line[slice(*PHON_INDS)])
+                sline = line[:PHON_INDS[1]]
             else:
                 m = mp(line[10:])
                 sline = line
@@ -43,9 +45,9 @@ def getLangFeatures(frac = 0.0, phon=False):
 
 
 if __name__ == "__main__":
+    from sklearn.cluster import KMeans
+    langs,X = getLangFeatures("language.csv", 0.6)
 
-    langs,X = getLangFeatures(0.6)
-    
     km = KMeans(n_clusters = 20)
 
     km.fit(X)
