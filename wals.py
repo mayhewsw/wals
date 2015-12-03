@@ -43,7 +43,7 @@ class WALSLanguage:
         self.coords = (walslist[4], walslist[5])
 
         # percentage of items that are nonzero
-        self.nonzerofrac = np.count_nonzero(self.feats) / float(len(self.feats))
+        self.nonzerofrac = np.count_nonzero(self.phon_feats()) / float(len(self.phon_feats()))
 
 
     def __getitem__(self, item):

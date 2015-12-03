@@ -11,7 +11,17 @@ def compare(fname, lang1, lang2):
     :param lang2: name of second lang
     :return: the distance of the languages, or -1 if one or both langs not found.
     """
+    l1,l2 = compareFeats(fname, lang1, lang2)
+    
+    if l1 and l2:
+        return cosine(l1.phon_feats(),l2.phon_feats())
+    else:
+        print "One or both langs not found: {0}, {1}".format(l1, l2)
+        return -1
 
+
+
+def compareFeats(fname, lang1, lang2):
     langs = wals.loadLangs(fname)
 
     l1 = None
@@ -22,12 +32,9 @@ def compare(fname, lang1, lang2):
         elif lang["Name"] == lang2:
             l2 = lang
 
-    if l1 and l2:
-        return cosine(l1.phon_feats(), l2.phon_feats())
-    else:
-        print "One or both langs not found: {0}, {1}".format(l1, l2)
-        return -1
-
+    return l1,l2
+    
+    
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
