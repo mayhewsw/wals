@@ -42,6 +42,10 @@ class WALSLanguage:
         # lat and long
         self.coords = (walslist[4], walslist[5])
 
+        # percentage of items that are nonzero
+        self.nonzerofrac = np.count_nonzero(self.feats) / float(len(self.feats))
+
+
     def __getitem__(self, item):
         return self.dct[item]
 
@@ -51,9 +55,11 @@ class WALSLanguage:
     def morph_feats(self):
         return self.feats[slice(*MORPH_INDS)]
 
-
     def __repr__(self):
         return "Language " + self.dct["Name"]
+
+    def fullname(self):
+        return self.dct["Name"] + ":" + self.dct["genus"] + ":" + self.dct["family"]
 
 
 def getHRLanguages(fname, hrthreshold=1000):
@@ -66,9 +72,9 @@ def getHRLanguages(fname, hrthreshold=1000):
     hrlangs = set()
     with open(fname) as fs:
         for line in fs:
-            long,short,size = line.strip().split()
+            long,iso639_3,iso639_1,size = line.strip().split()
             if int(size) > hrthreshold:
-                hrlangs.add(short)
+                hrlangs.add(iso639_3)
     return hrlangs
 
 
@@ -80,7 +86,6 @@ def loadLangs(fname):
     """
 
     hrlangs = getHRLanguages("langsizes.txt")
-    print hrlangs
 
     with open(fname) as csvfile:
         f = csv.reader(csvfile, delimiter=',', quotechar='"')
@@ -94,12 +99,8 @@ def loadLangs(fname):
             langs.append(lang)
             maxvals = np.maximum(maxvals, lang.feats)
 
-            print lang["iso_code"]
-
             if lang["iso_code"] in hrlangs:
                 lang.hr = True
-                print lang["Name"]
-
 
         # normalize each feature by the maximum possible value.
         for lang in langs:

@@ -3,10 +3,7 @@ from scipy.spatial.distance import cosine
 import wals
 
 
-
-
-
-def langsim(fname, lang, threshold, phon, only_hr=False, topk=10):
+def langsim(fname, lang, threshold, phon, only_hr=False, topk=20):
     """
     Gets a topk list of languages similar to this language, various parameters control this.
     :param fname:
@@ -17,33 +14,34 @@ def langsim(fname, lang, threshold, phon, only_hr=False, topk=10):
     :param topk:
     :return:
     """
-    langs,X = wals.getLangFeatures(fname, threshold, phon)
+    langs = wals.loadLangs(fname)
 
     if only_hr:
-        hrlangs = getHRLanguages("/home/venv/projects/projects/wals/filesizes.txt")
-    else:
-        hrlangs = set()
+        langs = filter(lambda l: l.hr, langs)
 
-    tl = ""
+    langs = filter(lambda l: l.nonzerofrac > threshold, langs)
+
+    tgtlang = None
     for l in langs:
-        if l[3] == lang:
-            tl = l
+        if l["Name"] == lang:
+            tgtlang = l
+            break
 
-    if tl == "":
+    if tgtlang == None:
         return [(-1, "Language '{0}' not found...".format(lang))]
-
-    # get feats for tl
-    mtl = wals.mp(tl[10:])
 
     dists = []
 
+    tgtf = tgtlang.phon_feats()
+
     for l in langs:
-        if l[3] == lang:
+        if l["Name"] == lang:
             continue
-        if only_hr and l[3].split()[0] not in hrlangs:
-            continue
-        t = wals.mp(l[10:])
-        dists.append((cosine(t,mtl), ",".join([l[3],l[6],l[7],l[8]])))
+
+        t = l.phon_feats()
+
+        dist = cosine(tgtf, t)
+        dists.append((dist, l.fullname()))
 
     dists = sorted(dists)
 
@@ -63,4 +61,4 @@ if __name__ == "__main__":
     print "lang: ", args.lang
     print "threshold: ", args.threshold
 
-    print langsim("language.csv", args.lang, args.threshold, phon=args.phon, topk=args.topk, comp=args.comp, only_hr=args.highresource)
+    print langsim("language.csv", args.lang, args.threshold, phon=args.phon, topk=args.topk, only_hr=args.highresource)
