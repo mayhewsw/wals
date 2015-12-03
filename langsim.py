@@ -21,12 +21,12 @@ def langsim(fname, lang, threshold, phon, only_hr=False, topk=20):
 
     tgtlang = None
     for l in langs:
-        if l["Name"] == lang:
+        if l["Name"].decode("utf8") == lang:
             tgtlang = l
             break
 
     if tgtlang == None:
-        return [(-1, "Language '{0}' not found...".format(lang))]
+        return [(-1, "Language '{0}' not found...".format(lang.encode("utf8")))]
 
     # now filter by high resource
     # get tgtlang first, b/c it may not be high resource
@@ -38,7 +38,7 @@ def langsim(fname, lang, threshold, phon, only_hr=False, topk=20):
     tgtf = tgtlang.phon_feats()
 
     for l in langs:
-        if l["Name"] == lang:
+        if l["Name"].decode("utf8") == lang:
             continue
 
         t = l.phon_feats()

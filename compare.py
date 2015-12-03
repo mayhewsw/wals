@@ -27,9 +27,9 @@ def compareFeats(fname, lang1, lang2):
     l1 = None
     l2 = None
     for lang in langs:
-        if lang["Name"] == lang1:
+        if lang["Name"].decode("utf8") == lang1:
             l1 = lang
-        elif lang["Name"] == lang2:
+        elif lang["Name"].decode("utf8") == lang2:
             l2 = lang
 
     return l1,l2
