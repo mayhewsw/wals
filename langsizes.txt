@@ -1,82 +1,77 @@
-Afrikaans	af	742
-Albanian	sq	737
-Arabic	ar	29523
-Aragonese	an	510
-Armenian	hy	8232
-Asturian	ast	620
-Basque	eu	1660
-Belarusian	be	5043
-Belarusian_Taraškievica	be-tarask	4106
-Bengali	bn	4789
-Bosnian	bs	667
-Breton	br	839
-Bulgarian	bg	18016
-Burmese	my	366
-Cantonese	zh-yue	3
-Catalan	ca	7074
-Chechen	ce	178
-Chinese	zh	1770
-Croatian	hr	1588
-Czech	cs	8204
-Danish	da	6281
-Esperanto	eo	3489
-Estonian	et	1318
-Finnish	fi	4818
-French	fr	23327
-Galician	gl	1109
-Greek	el	10695
-Haitian	ht	146
-Hebrew	he	26265
-Hungarian	hu	7566
-Icelandic	is	623
-Indonesian	id	2381
-Irish	ga	486
-Japanese	ja	1731
-Javanese	jv	268
-Kazakh	kk	2159
-Kirghiz	ky	216
-Korean	ko	25667
-Latin	la	6731
-Latvian	lv	5934
-Lithuanian	lt	1817
-Luxembourgish	lb	461
-Macedonian	mk	3961
-Malay	ms	472
-Malayalam	ml	3775
-Marathi	mr	5790
-Minangkabau	min	49
-Min_Nan	zh-min-nan	1
-Newar	new	251
-Norwegian_Bokmål	no	6
-Norwegian_Nynorsk	nn	4583
-Occitan	oc	606
-Persian	fa	76176
-Piedmontese	pms	355
-Polish	pl	16182
-Polish	pl	500
-Polish	pl	500
-Portuguese	pt	8111
-Romanian	ro	3076
-Russian	ru	130655
-Russian	ru	130654
-Serbian	sr	13255
-Serbo-Croatian	sh	3741
-Slovak	sk	2390
-Slovenian	sl	1441
-Swahili	sw	349
-Tagalog	tl	586
-Tajik	tg	587
-Tamil	ta	9165
-Tatar	tt	578
-Telugu	te	1593
-Thai	th	4606
-Turkish	tr	2792
-Ukrainian	uk	30930
-Urdu	ur	2864
-Uzbek	uz	348
-Vietnamese	vi	2320
-Vietnamese	vi	2031
-Volapük	vo	57
-Welsh	cy	542
-Western_Punjabi	pnb	1459
-Yoruba	yo	283
+Afrikaans	afr	af	742
+Albanian	sqi	sq	737
+Arabic	ara	ar	29523
+Aragonese	arg	an	510
+Armenian	hye	hy	8232
+Asturian	ast ??	620
+Basque	eus	eu	1660
+Belarusian	bel	be	5043
+Bengali	ben	bn	4789
+Bosnian	bos	bs	667
+Breton	bre	br	839
+Bulgarian	bul	bg	18016
+Burmese	mya	my	366
+Catalan	cat	ca	7074
+Chechen	che	ce	178
+Chinese	zho	zh	1770
+Croatian	hrv	hr	1588
+Czech	ces	cs	8204
+Danish	dan	da	6281
+Esperanto	epo	eo	3489
+Estonian	est	et	1318
+Finnish	fin	fi	4818
+French	fra	fr	23327
+Galician	glg	gl	1109
+Greek	ell	el	10695
+Haitian	hat	ht	146
+Hebrew	heb	he	26265
+Hungarian	hun	hu	7566
+Icelandic	isl	is	623
+Indonesian	ind	id	2381
+Irish	gle	ga	486
+Japanese	jpn	ja	1731
+Javanese	jav	jv	268
+Kazakh	kaz	kk	2159
+Kirghiz	kir	ky	216
+Korean	kor	ko	25667
+Latin	lat	la	6731
+Latvian	lav	lv	5934
+Lithuanian	lit	lt	1817
+Luxembourgish	ltz	lb	461
+Macedonian	mkd	mk	3961
+Malay	msa	ms	472
+Malayalam	mal	ml	3775
+Marathi	mar	mr	5790
+Minangkabau	min ??	49
+Min_Nan	nan	zh-min-nan	1
+Newar	new ??	251
+Norwegian_Bokmål	nor	no	6
+Norwegian_Nynorsk	nno	nn	4583
+Occitan	oci	oc	606
+Persian	fas	fa	76176
+Piedmontese	pms ??	355
+Polish	pol	pl	16182
+Portuguese	por	pt	8111
+Romanian	ron	ro	3076
+Russian	rus	ru	130655
+Serbian	srp	sr	13255
+Serbo-Croatian	hbs	sh	3741
+Slovak	slk	sk	2390
+Slovenian	slv	sl	1441
+Swahili	swa	sw	349
+Tagalog	tgl	tl	586
+Tajik	tgk	tg	587
+Tamil	tam	ta	9165
+Tatar	tat	tt	578
+Telugu	tel	te	1593
+Thai	tha	th	4606
+Turkish	tur	tr	2792
+Ukrainian	ukr	uk	30930
+Urdu	urd	ur	2864
+Uzbek	uzb	uz	348
+Vietnamese	vie	vi	2320
+Vietnamese	vie	vi	2031
+Volapük	vol	vo	57
+Welsh	cym	cy	542
+Western_Punjabi	pnb     pnb	1459
+Yoruba	yor	yo	283

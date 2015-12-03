@@ -66,11 +66,9 @@ def getHRLanguages(fname, hrthreshold=1000):
     hrlangs = set()
     with open(fname) as fs:
         for line in fs:
-            sline = line.strip().split()
-            if int(sline[0]) > hrthreshold:
-                # name formats are wikidata.<langname>
-                langname = sline[1].split(".")[1]
-                hrlangs.add(langname)
+            long,short,size = line.strip().split()
+            if int(size) > hrthreshold:
+                hrlangs.add(short)
     return hrlangs
 
 
@@ -81,7 +79,7 @@ def loadLangs(fname):
     :return: list of WALSLanguage objects
     """
 
-    hrlangs = getHRLanguages("filesizes.txt")
+    hrlangs = getHRLanguages("langsizes.txt")
     print hrlangs
 
     with open(fname) as csvfile:
@@ -95,6 +93,8 @@ def loadLangs(fname):
             lang = WALSLanguage(header, line)
             langs.append(lang)
             maxvals = np.maximum(maxvals, lang.feats)
+
+            print lang["iso_code"]
 
             if lang["iso_code"] in hrlangs:
                 lang.hr = True
