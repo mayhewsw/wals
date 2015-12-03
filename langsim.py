@@ -68,9 +68,10 @@ if __name__ == "__main__":
     parser.add_argument("--topk", help="show top k results", type=int, default=10)
     parser.add_argument("--highresource", help="only compare with high resource", action="store_true")
     
-    args = parser.parse_args()
+    #args = parser.parse_args()
 
-    print "lang: ", args.lang
-    print "threshold: ", args.threshold
+    #print "lang: ", args.lang
+    #print "threshold: ", args.threshold
 
-    print langsim("language.csv", args.lang, args.threshold, phon=args.phon, topk=args.topk, only_hr=args.highresource)
+    #print langsim("language.csv", args.lang, args.threshold, phon=args.phon, topk=args.topk, only_hr=args.highresource)
+    print langsim("language.csv", "Hamtai", 0.7, True)
