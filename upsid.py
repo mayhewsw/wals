@@ -78,8 +78,34 @@ def loadLangs(fname):
         return langs
 
 
+def langsim(langname, langs):
+    out = []
+
+    # first get the language object
+    tgtlang = None
+    for lang in langs:
+        if lang.name == langname:
+            tgtlang = lang
+
+
+    if tgtlang == None:
+        print "Whops... didn't find " + langname
+        return None
+
+            
+    for lang in langs:
+        if tgtlang.name == lang.name:
+            continue
+        print lang.feats.shape
+        print tgtlang.feats.shape
+        # dot doesn't work???
+        out.append((lang.feats.dot(tgtlang.feats), lang.name))
+    return out
+
 if __name__ == "__main__":
     lf = loadLangs("upsid_matrix.tsv")
-    f = lf[8]
 
+    lst = langsim("french", lf)
+    print lst
+    
     
