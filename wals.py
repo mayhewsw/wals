@@ -85,8 +85,10 @@ def loadLangs(fname):
     :return: list of WALSLanguage objects
     """
 
-    hrlangs = getHRLanguages("langsizes.txt")
-
+    import os
+    __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+    hrlangs = getHRLanguages(os.path.join(__location__, "langsizes.txt"))
+        
     with open(fname) as csvfile:
         f = csv.reader(csvfile, delimiter=',', quotechar='"')
         langs = []

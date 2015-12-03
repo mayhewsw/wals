@@ -16,9 +16,6 @@ def langsim(fname, lang, threshold, phon, only_hr=False, topk=20):
     """
     langs = wals.loadLangs(fname)
 
-    if only_hr:
-        langs = filter(lambda l: l.hr, langs)
-
     langs = filter(lambda l: l.nonzerofrac > threshold, langs)
 
     tgtlang = None
@@ -29,6 +26,11 @@ def langsim(fname, lang, threshold, phon, only_hr=False, topk=20):
 
     if tgtlang == None:
         return [(-1, "Language '{0}' not found...".format(lang))]
+
+    # now filter by high resource
+    # get tgtlang first, b/c it may not be high resource
+    if only_hr:
+        langs = filter(lambda l: l.hr, langs)
 
     dists = []
 
