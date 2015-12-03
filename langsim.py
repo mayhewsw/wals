@@ -1,6 +1,7 @@
 import argparse
 from scipy.spatial.distance import cosine 
 import wals
+import numpy as np
 
 
 def langsim(fname, lang, threshold, phon, only_hr=False, topk=20):
@@ -42,7 +43,16 @@ def langsim(fname, lang, threshold, phon, only_hr=False, topk=20):
 
         t = l.phon_feats()
 
-        dist = cosine(tgtf, t)
+        #dist = cosine(tgtf, t)
+        numequal = sum(np.equal(tgtf, t))
+        # now remove all places where they are both zero
+        a = set(np.where(tgtf == 0)[0])
+        b = set(np.where(t == 0)[0])
+
+        numequal -= len(a.intersection(b))
+        
+        dist = 1 - numequal / float(len(tgtf))
+        
         dists.append((dist, l.fullname()))
 
     dists = sorted(dists)
