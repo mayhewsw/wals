@@ -17,6 +17,7 @@ Chinese	zho	zh	1770
 Croatian	hrv	hr	1588
 Czech	ces	cs	8204
 Danish	dan	da	6281
+English eng en  100000000
 Esperanto	epo	eo	3489
 Estonian	est	et	1318
 Finnish	fin	fi	4818
