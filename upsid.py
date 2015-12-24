@@ -18,6 +18,8 @@ class UPSIDLanguage:
         # Known number
         self.NUMFEATS = 919
 
+        self.sounds = set(filter(lambda e: len(e.strip()) > 0, tlist[1:]))
+
         self.feats = csc_matrix(self.mp(tlist[1:]))
 
 
@@ -78,7 +80,7 @@ def loadLangs(fname):
         return langs
 
 
-def langsim(langname, langs):
+def langsim(langname, langs, topk=100):
     out = []
 
     # first get the language object
@@ -96,16 +98,17 @@ def langsim(langname, langs):
     for lang in langs:
         if tgtlang.name == lang.name:
             continue
-        print lang.feats.shape
-        print tgtlang.feats.shape
-        # dot doesn't work???
-        out.append((lang.feats.dot(tgtlang.feats), lang.name))
-    return out
+        
+        out.append((lang.feats.dot(tgtlang.feats.T).toarray()[0][0], lang.name))
+    out = sorted(out, reverse=True)
+    return out[:topk]
+
 
 if __name__ == "__main__":
     lf = loadLangs("upsid_matrix.tsv")
 
     lst = langsim("french", lf)
     print lst
+    print lf[0].sounds
     
     
