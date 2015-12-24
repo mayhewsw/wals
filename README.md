@@ -22,15 +22,3 @@ The World Atlas of Language Structures Online.
 Leipzig: Max Planck Institute for Evolutionary Anthropology.
 (Available online at http://wals.info, Accessed on 2015-07-30.)
 
-
-## UPSID Data
-
-I also downloaded UPSID data from http://www.linguistics.ucla.edu/faciliti/sales/software.htm
-
-This data is in upsid_matrix.tsv
-
-There are 919 segments. Not every line has 919 fields (they may truncate a little early).
-
-If a non-space element shows up in a certain index, then only that element will ever appear in that index. (Verified experimentally). This means that the matrix is essentially a bit-vector (it might be valuable to pay special attention to sounds (or classes of sounds) that have interpretation, such as consonants and vowels).
-
-See this page for info: http://web.phonetik.uni-frankfurt.de/upsid_info.html
