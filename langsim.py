@@ -17,11 +17,11 @@ def langsim(fname, lang, threshold, phon, only_hr=False, topk=20):
     """
     langs = wals.loadLangs(fname)
 
-    langs = filter(lambda l: l.nonzerofrac > threshold, langs)
+    #langs = filter(lambda l: l.nonzerofrac > threshold, langs)
 
     tgtlang = None
     for l in langs:
-        if l["Name"].decode("utf8") == lang:
+        if l["iso_code"].decode("utf8") == lang:
             tgtlang = l
             break
 
@@ -38,7 +38,7 @@ def langsim(fname, lang, threshold, phon, only_hr=False, topk=20):
     tgtf = tgtlang.phon_feats()
 
     for l in langs:
-        if l["Name"].decode("utf8") == lang:
+        if l["iso_code"].decode("utf8") == lang:
             continue
 
         t = l.phon_feats()
