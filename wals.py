@@ -61,8 +61,11 @@ class WALSLanguage:
     def fullname(self):
         return self.dct["Name"] + ":" + self.dct["genus"] + ":" + self.dct["family"]
 
+    def name(self):
+        return self.dct["Name"]
 
-def getHRLanguages(fname, hrthreshold=1000):
+
+def getHRLanguages(fname, hrthreshold=0):
     """
     :param fname: the name of the file containing filesizes. Created using wc -l in the wikidata folder
     :param hrthreshold: how big a set of transliteration pairs needs to be considered high resource
@@ -108,9 +111,11 @@ def loadLangs(fname):
         for lang in langs:
             lang.feats = lang.feats / maxvals
 
+        langs = sorted(langs, key=lambda t: t.name().lower())
         return langs
 
 
 if __name__ == "__main__":
     lf = loadLangs("language.csv")
     f = lf[8]
+    print map(lambda l: l.dct["iso_code"], lf)
