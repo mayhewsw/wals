@@ -118,4 +118,3 @@ def loadLangs(fname):
 if __name__ == "__main__":
     lf = loadLangs("language.csv")
     f = lf[8]
-    print map(lambda l: l.dct["iso_code"], lf)
